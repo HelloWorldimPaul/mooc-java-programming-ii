@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ReadingFilesPerLine {
 
@@ -12,6 +13,31 @@ public class ReadingFilesPerLine {
         Scanner scanner = new Scanner(System.in);
         // test the method here
 
+
+
+
+
+
+
+
     }
+
+    public static List<String> read(String file){
+
+        List<String> rows = new ArrayList<>();
+
+        try(Stream<String> lines =  Files.lines(Paths.get(file))){
+
+           lines.forEach(row -> rows.add(row));
+        }catch (Exception e){
+
+            System.out.println("Error: hehehehe");
+        }
+
+        return rows;
+
+
+    }
+
 
 }

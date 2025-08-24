@@ -14,6 +14,7 @@ public class UniqueLastNames {
             if(scanner.hasNextLine()){continueQ = scanner.nextLine();}
 
             if (continueQ.equals("quit")) {
+                System.out.println();
                 break;
             }
 
@@ -32,5 +33,7 @@ public class UniqueLastNames {
         }
 
         // Implement the printing of the unique last names in alphabetical order here:
+        System.out.println("Unique last names in alphabetical order:");
+        persons.stream().map(person -> person.getLastName()).distinct().sorted().forEach(s -> System.out.println(s));
     }
 }
