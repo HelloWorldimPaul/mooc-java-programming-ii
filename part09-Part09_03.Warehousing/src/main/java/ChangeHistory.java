@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class ChangeHistory {
 
@@ -13,12 +15,12 @@ public class ChangeHistory {
 
     public void add(double status) {
 
-        history.add(status);
+        this.history.add(status);
     }
 
     public void clear() {
 
-        history.clear();
+        this.history.clear();
 
     }
 
@@ -31,37 +33,24 @@ public class ChangeHistory {
 
     public double maxValue(){
 
-        if (this.history.isEmpty()) return 0;
-
-        double largestValue = this.history.get(0);
-
-        for(Double history : this.history){
-
-            if(history > largestValue){
-
-                largestValue = history;
-
-            }
-
-        }
-
-        return largestValue;
+        return Collections.max(this.history);
 
     }
 
     public double minValue(){
 
-        if (this.history.isEmpty()) return 0;
-        double smallestValue = this.history.get(0);
-
-        for(Double value : this.history) if(value < smallestValue) smallestValue = value;
-        return smallestValue;
+        return Collections.min(this.history);
 
     }
 
     public double average(){
 
-        if(this.history.isEmpty()){
+        return this.history.stream().mapToDouble(Double::doubleValue).average().orElse(0);
+
+        /*
+
+
+         if(this.history.isEmpty()){
             return 0;
 
         }
@@ -74,6 +63,12 @@ public class ChangeHistory {
 
         }
         return avgValue/this.history.size();
+
+
+         */
+
+
+
 
     }
 }

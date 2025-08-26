@@ -1,7 +1,7 @@
 public class ProductWarehouseWithHistory extends ProductWarehouse {
 
 
-    private ChangeHistory history;
+    private final ChangeHistory history;
 
     public ProductWarehouseWithHistory(String productName, double capacity, double initialBalance) {
         super(productName, capacity);

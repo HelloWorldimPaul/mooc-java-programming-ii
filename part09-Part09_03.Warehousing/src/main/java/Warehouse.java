@@ -2,16 +2,12 @@
 
 public class Warehouse {
 
-    private double capacity;
+    private final double capacity;
     private double balance;
 
     public Warehouse(double capacity) {
-        if (capacity > 0.0) {
-            this.capacity = capacity;
-        } else {
-            this.capacity = 0.0;
-        }
 
+        this.capacity = Math.max(capacity, 0.0);
         this.balance = 0.0;
     }
 
@@ -28,20 +24,18 @@ public class Warehouse {
     }
 
     public void addToWarehouse(double amount) {
-        if (amount < 0) {
-            return;
-        }
-        if (amount <= howMuchSpaceLeft()) {
-            this.balance = this.balance + amount;
-        } else {
-            this.balance = this.capacity;
-        }
+        if(amount < 0) return;
+        this.balance = Math.min(this.balance + amount, this.capacity);
     }
 
     public double takeFromWarehouse(double amount) {
-        if (amount < 0) {
-            return 0.0;
-        }
+
+        if (amount < 0) return 0.0;
+
+        return Math.max(this.balance - amount, this.capacity);
+
+
+        /*
         if (amount > this.balance) {
             double allThatWeCan = this.balance;
             this.balance = 0.0;
@@ -50,6 +44,8 @@ public class Warehouse {
 
         this.balance = this.balance - amount;
         return amount;
+
+         */
     }
 
     public String toString() {
