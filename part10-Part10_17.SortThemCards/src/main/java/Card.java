@@ -41,7 +41,15 @@ public class Card implements Comparable<Card>{
     @Override
     public int compareTo(Card card){
 
-        return this.value - card.value;
+        int result = this.getValue() - card.getValue();
+
+        if(result == 0){
+
+            return this.getSuit().ordinal() - card.getSuit().ordinal();
+        }else{
+            return result;
+        }
+
 
     }
 
