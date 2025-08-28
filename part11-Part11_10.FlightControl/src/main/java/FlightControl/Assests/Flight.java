@@ -2,9 +2,9 @@ package FlightControl.Assests;
 
 public class Flight {
 
-    Plane plane;
-    String departureID;
-    String destinationID;
+    private final Plane plane;
+    private final String departureID;
+    private final String destinationID;
 
 
     public Flight(Plane plane, String departureId, String destinationID){
