@@ -7,18 +7,23 @@ public class Person {
 
     public Person(String name, int age) {
 
-        if (name != null && name.matches("^(?=\\S)(?!\\s*$).{1,40}$")) {
+        if (name == null) {
 
-            if(age >= 0 && age <= 120){
-
-                this.name = name;
-                this.age = age;
-
-            }
-        } else {
-           throw new IllegalArgumentException("Invalid input");
+            throw new IllegalArgumentException("Invalid input");
         }
 
+        if (!name.matches("^(?=\\S).{1,40}$")) {
+            throw new IllegalArgumentException("Invalid input");
+        }
+
+        if ((age < 0) || (age > 120)) {
+
+            throw new IllegalArgumentException("Invalid input");
+
+        }
+
+        this.name = name;
+        this.age = age;
 
     }
 
