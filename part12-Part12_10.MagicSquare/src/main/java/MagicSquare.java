@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class MagicSquare {
 
@@ -8,24 +9,92 @@ public class MagicSquare {
 
     // ready constructor
     public MagicSquare(int size) {
+
         if (size < 2) {
             size = 2;
         }
 
         this.square = new int[size][size];
+
     }
 
     // implement these three methods
     public ArrayList<Integer> sumsOfRows() {
-        return new ArrayList<>();
+
+        ArrayList<Integer> sumOfRows = new ArrayList<>();
+
+        int total = 0;
+
+        for (int y = 0; y < this.getWidth(); y++) {
+
+            for (int x = 0; x < this.getHeight(); x++) {
+
+                total += this.square[y][x];
+
+            }
+            sumOfRows.add(total);
+            total = 0;
+        }
+
+        return sumOfRows;
+
     }
 
     public ArrayList<Integer> sumsOfColumns() {
-        return new ArrayList<>();
+
+        ArrayList<Integer> sumOfColumns = new ArrayList<>();
+
+        int total = 0;
+
+        for (int x = 0; x < this.getWidth(); x++) {
+
+            for (int y = 0; y < this.getHeight(); y++) {
+
+                total += this.square[y][x];
+
+            }
+
+            sumOfColumns.add(total);
+            total = 0;
+        }
+
+        return sumOfColumns;
+
     }
 
     public ArrayList<Integer> sumsOfDiagonals() {
-        return new ArrayList<>();
+        ArrayList<Integer> sumOfDiagonals = new ArrayList<>();
+
+        int diagonalsTotal = 0;
+        int row = 0;
+        int column = 0;
+
+        for (int i = 0; i < this.square.length; i++) {
+
+            diagonalsTotal += this.square[row][column];
+
+            row++;
+            column++;
+
+        }
+
+        sumOfDiagonals.add(diagonalsTotal);
+
+        diagonalsTotal = 0;
+        row = 0;
+        column = this.getWidth() - 1;
+
+        for (int i = 0; i < this.square.length; i++) {
+
+            diagonalsTotal += this.square[row][column];
+
+            row++;
+            column--;
+
+        }
+        sumOfDiagonals.add(diagonalsTotal);
+
+        return sumOfDiagonals;
     }
 
     // ready-made helper methods -- don't touch these
@@ -78,7 +147,7 @@ public class MagicSquare {
 
     public int readValue(int x, int y) {
         if (x < 0 || y < 0 || x >= getWidth() || y >= getHeight()) {
-            return - 1;
+            return -1;
         }
 
         return this.square[y][x];
