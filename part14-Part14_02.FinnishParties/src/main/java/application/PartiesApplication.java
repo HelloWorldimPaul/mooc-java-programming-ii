@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -37,7 +38,7 @@ public class PartiesApplication extends Application {
 
         try {
 
-            Map<String, Map<Integer, Double>> data = hashMap(path);
+           Map<String, LinkedHashMap<Integer, Double>> data = hashMap(path);
 
             for (String key : data.keySet()) {
 
@@ -67,8 +68,8 @@ public class PartiesApplication extends Application {
 
     }
 
-    private static Map<String, Map<Integer, Double>> hashMap(Path path) throws IOException {
-        Map<String, Map<Integer, Double>> data = new HashMap<>();
+    private static Map<String, LinkedHashMap<Integer, Double>> hashMap(Path path) throws IOException {
+        Map<String, LinkedHashMap<Integer, Double>> data = new LinkedHashMap<>();
 
         List<String> lines = Files.readAllLines(path);
 
@@ -82,11 +83,11 @@ public class PartiesApplication extends Application {
 
         for (int i = 1; i < lines.size(); i++) {
 
-            String[] parts = lines.get(i).split("\\s");
+            String[] parts = lines.get(i).split("\\s+");
 
             String name = parts[0];
 
-            Map<Integer, Double> yearSupportData = new HashMap<>();
+            LinkedHashMap<Integer, Double> yearSupportData = new LinkedHashMap<>();
 
             for (int j = 1; j < parts.length; j++) {
 
