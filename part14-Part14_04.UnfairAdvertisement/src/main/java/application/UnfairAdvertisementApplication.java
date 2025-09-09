@@ -23,10 +23,10 @@ public class UnfairAdvertisementApplication extends Application {
         barChart.setLegendVisible(false);
 
         XYChart.Series speeds = new XYChart.Series();
-        speeds.getData().add(new XYChart.Data("NDA", 77.4));
-        speeds.getData().add(new XYChart.Data("Fastie", 77.2));
-        speeds.getData().add(new XYChart.Data("SuperNet", 77.1));
-        speeds.getData().add(new XYChart.Data("Meganet", 77.1));
+        speeds.getData().add(new XYChart.Data("Convege", 77.4));
+        speeds.getData().add(new XYChart.Data("Globe", 77.2));
+        speeds.getData().add(new XYChart.Data("PLDT", 77.1));
+        speeds.getData().add(new XYChart.Data("SkyCable", 77.1));
 
         barChart.getData().add(speeds);
         Scene view = new Scene(barChart, 400, 300);
